@@ -1,0 +1,219 @@
+{
+  "name": "api",
+  "runtime": "nodejs4.3",
+  "description": "Serverless Lambda function for project: tranquilo",
+  "customName": false,
+  "customRole": false,
+  "handler": "handler.handler",
+  "timeout": 6,
+  "memorySize": 1024,
+  "authorizer": {},
+  "custom": {
+    "excludePatterns": []
+  },
+  "endpoints": [
+    {
+      "path": "api/{table}/{hash}",
+      "method": "GET",
+      "type": "AWS",
+      "authorizationType": "none",
+      "authorizerFunction": false,
+      "apiKeyRequired": false,
+      "requestParameters": {},
+      "requestTemplates": {
+		"application/json": {
+			"table": "$input.params('table')",
+			"hash": "$input.params('hash')",
+      		"operation" : "$context.httpMethod"
+	    	}
+      	},
+      "responses": {
+        "400": {
+          "statusCode": "400"
+        },
+        "default": {
+          "statusCode": "200",
+          "responseParameters": {},
+          "responseModels": {
+            "application/json;charset=UTF-8": "Empty"
+          },
+          "responseTemplates": {
+            "application/json;charset=UTF-8": ""
+          }
+        }
+      }
+    },
+    {
+      "path": "api/{table}/{hash}/{id}",
+      "method": "GET",
+      "type": "AWS",
+      "authorizationType": "none",
+      "authorizerFunction": false,
+      "apiKeyRequired": false,
+      "requestParameters": {},
+      "requestTemplates": {
+		"application/json": {
+			"table": "$input.params('table')",
+		    "hash": "$input.params('hash')",
+      		"id": "$input.params('id')",
+      		"operation" : "$context.httpMethod"
+    		}
+  		},
+      "responses": {
+        "400": {
+          "statusCode": "400"
+        },
+        "default": {
+          "statusCode": "200",
+          "responseParameters": {},
+          "responseModels": {
+            "application/json;charset=UTF-8": "Empty"
+          },
+          "responseTemplates": {
+            "application/json;charset=UTF-8": ""
+          }
+        }
+      }
+    },
+    {
+      "path": "api/{table}/{hash}/{id}/{attribute}",
+      "method": "GET",
+      "type": "AWS",
+      "authorizationType": "none",
+      "authorizerFunction": false,
+      "apiKeyRequired": false,
+      "requestParameters": {},
+      "requestTemplates": {
+		"application/json": {
+			"table": "$input.params('table')",
+			"hash": "$input.params('hash')",
+			"id": "$input.params('id')",
+      		"attribute": "$input.params('attribute')",
+      		"operation" : "$context.httpMethod"
+	    	}
+      	},
+      "responses": {
+        "400": {
+          "statusCode": "400"
+        },
+        "default": {
+          "statusCode": "200",
+          "responseParameters": {},
+          "responseModels": {
+            "application/json;charset=UTF-8": "Empty"
+          },
+          "responseTemplates": {
+            "application/json;charset=UTF-8": ""
+          }
+        }
+      }
+    },
+ 	{
+      "path": "api/{table}/{hash}",
+      "method": "POST",
+      "type": "AWS",
+      "authorizationType": "none",
+      "authorizerFunction": false,
+      "apiKeyRequired": false,
+      "requestParameters": {},
+      "requestTemplates": {
+        "application/json": {
+			"table": "$input.params('table')",
+      		"hash": "$input.params('hash')",
+      		"body" : "$input.json('$')",
+      		"operation" : "$context.httpMethod"
+	    }
+      },
+      "responses": {
+        "400": {
+          "statusCode": "400"
+        },
+        "default": {
+          "statusCode": "200",
+          "responseParameters": {},
+          "responseModels": {
+            "application/json;charset=UTF-8": "Empty"
+          },
+          "responseTemplates": {
+            "application/json;charset=UTF-8": ""
+          }
+        }
+      }
+    },
+	{
+      "path": "api/{table}/{hash}/{id}",
+      "method": "PUT",
+      "type": "AWS",
+      "authorizationType": "none",
+      "authorizerFunction": false,
+      "apiKeyRequired": false,
+      "requestParameters": {},
+      "requestTemplates": {
+        "application/json": {
+			"table": "$input.params('table')",
+		    "hash": "$input.params('hash')",
+      		"id": "$input.params('id')",
+      		"body" : "$input.json('$')",
+      		"operation" : "$context.httpMethod"
+	    }
+      },
+      "responses": {
+        "400": {
+          "statusCode": "400"
+        },
+        "default": {
+          "statusCode": "200",
+          "responseParameters": {},
+          "responseModels": {
+            "application/json;charset=UTF-8": "Empty"
+          },
+          "responseTemplates": {
+            "application/json;charset=UTF-8": ""
+          }
+        }
+      }
+    },
+	{
+      "path": "api/{table}/{hash}/{id}",
+      "method": "DELETE",
+      "type": "AWS",
+      "authorizationType": "none",
+      "authorizerFunction": false,
+      "apiKeyRequired": false,
+      "requestParameters": {},
+      "requestTemplates": {
+        "application/json": {
+			"table": "$input.params('table')",
+			"hash": "$input.params('hash')",
+		    "id": "$input.params('id')",
+      		"operation" : "$context.httpMethod"
+	    }
+      },
+      "responses": {
+        "400": {
+          "statusCode": "400"
+        },
+        "default": {
+          "statusCode": "200",
+          "responseParameters": {},
+          "responseModels": {
+            "application/json;charset=UTF-8": "Empty"
+          },
+          "responseTemplates": {
+            "application/json;charset=UTF-8": ""
+          }
+        }
+      }
+    }
+  ],
+  "events": [],
+  "environment": {
+    "SERVERLESS_PROJECT": "${project}",
+    "SERVERLESS_STAGE": "${stage}",
+    "SERVERLESS_REGION": "${region}"
+  },
+  "vpc": {
+    "securityGroupIds": [],
+    "subnetIds": []
+  }
+}
