@@ -29,18 +29,34 @@
       "Properties": {
         "PolicyName": "${stage}-${project}-lambda",
         "PolicyDocument": {
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Effect": "Allow",
-              "Action": [
-                "logs:CreateLogGroup",
-                "logs:CreateLogStream",
-                "logs:PutLogEvents"
-              ],
-              "Resource": "arn:aws:logs:${region}:*:*"
-            }
-          ]
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Sid": "1",
+                    "Action": [
+                        "dynamodb:DeleteItem",
+                        "dynamodb:GetItem",
+                        "dynamodb:PutItem",
+                        "dynamodb:Query",
+                        "dynamodb:Scan",
+                        "dynamodb:UpdateItem",
+                        "lambda:GetFunction",
+                        "lambda:InvokeFunction"
+                    ],
+                    "Effect": "Allow",
+                    "Resource": "*"
+                },
+                {
+                    "Sid": "",
+                    "Resource": "*",
+                    "Action": [
+                        "logs:CreateLogGroup",
+                        "logs:CreateLogStream",
+                        "logs:PutLogEvents"
+                    ],
+                    "Effect": "Allow"
+                }
+            ]
         },
         "Roles": [
           {
