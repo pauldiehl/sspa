@@ -1,3 +1,7 @@
+/**
+ * Created by Sandeep on 01/06/14.
+ */
+
 angular.module('movieApp.services',[]).factory('Movie',function($resource){
     return $resource('http://movieapp-sitepointdemos.rhcloud.com/api/movies/:id',{id:'@_id'},{
         update: {

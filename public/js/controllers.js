@@ -1,6 +1,7 @@
-angular.module('movieApp.controllers',[])
-
-.controller('MovieListController',function($scope,$state,popupService,$window,Movie){
+/**
+ * Created by Sandeep on 01/06/14.
+ */
+angular.module('movieApp.controllers',[]).controller('MovieListController',function($scope,$state,popupService,$window,Movie){
 
     $scope.movies=Movie.query();
 
@@ -11,15 +12,12 @@ angular.module('movieApp.controllers',[])
             });
         }
     }
-})
 
-.controller('MovieViewController',function($scope,$stateParams,Movie){
+}).controller('MovieViewController',function($scope,$stateParams,Movie){
 
     $scope.movie=Movie.get({id:$stateParams.id});
 
-})
-
-.controller('MovieCreateController',function($scope,$state,$stateParams,Movie){
+}).controller('MovieCreateController',function($scope,$state,$stateParams,Movie){
 
     $scope.movie=new Movie();
 
@@ -28,9 +26,8 @@ angular.module('movieApp.controllers',[])
             $state.go('movies');
         });
     }
-})
 
-.controller('MovieEditController',function($scope,$state,$stateParams,Movie){
+}).controller('MovieEditController',function($scope,$state,$stateParams,Movie){
 
     $scope.updateMovie=function(){
         $scope.movie.$update(function(){
