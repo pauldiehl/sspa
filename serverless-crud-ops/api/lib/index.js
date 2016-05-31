@@ -40,8 +40,6 @@ console.log('Received event:', JSON.stringify(event, null, 2));
         case 'PUT':
         		payload = getParams.put(event, payload);
 				dynamo.putItem(payload, callback);
-				//payload.Key = getParams.getKey(event);
-				//dynamo.updateItem(payload, callback);
             break;
         case 'DELETE': 
         		payload.Key = getParams.getKey(event);
