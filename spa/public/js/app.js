@@ -21,6 +21,9 @@ angular.module('movieApp').config(function($stateProvider,$httpProvider){
         url:'/movies/:id/edit',
         templateUrl:'partials/movie-edit.html',
         controller:'MovieEditController'
+    }).state("otherwise", {
+        url: "*path",
+        templateUrl: "partials/error-data.html"
     });
 }).run(function($state){
    $state.go('movies');
