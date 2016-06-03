@@ -29,8 +29,8 @@
       "Properties": {
         "PolicyName": "${stage}-${project}-lambda",
         "PolicyDocument": {
-            "Version": "2012-10-17",
-            "Statement": [
+          "Version": "2012-10-17",
+          "Statement": [
                 {
                     "Sid": "1",
                     "Action": [
@@ -44,17 +44,17 @@
                         "lambda:InvokeFunction"
                     ],
                     "Effect": "Allow",
-                    "Resource": "*"
+                    "Resource": "arn:aws:dynamodb:${region}:*:*"
                 },
                 {
-                    "Sid": "",
-                    "Resource": "*",
+                    "Sid": "2",
                     "Action": [
                         "logs:CreateLogGroup",
                         "logs:CreateLogStream",
                         "logs:PutLogEvents"
                     ],
-                    "Effect": "Allow"
+                    "Effect": "Allow",
+                    "Resource": "arn:aws:logs:${region}:*:*"
                 }
             ]
         },

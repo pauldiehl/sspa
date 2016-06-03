@@ -1,7 +1,7 @@
 {
-  "name": "api",
+  "name": "simplePK",
   "runtime": "nodejs4.3",
-  "description": "Serverless Lambda function for project: tranquilo",
+  "description": "Serverless Lambda function for project: s-crud-ops",
   "customName": false,
   "customRole": false,
   "handler": "handler.handler",
