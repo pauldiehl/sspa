@@ -3,7 +3,7 @@
  */
 
 angular.module('movieApp.services',[]).factory('Movie',function($resource){
-    return $resource('http://movieapp-sitepointdemos.rhcloud.com/api/movies/:id',{id:'@_id'},{
+    return $resource('https://e23jsymsh0.execute-api.us-east-1.amazonaws.com/dev/api/account/accountID/:id',{id:'@_id'},{
         update: {
             method: 'PUT'
         }
