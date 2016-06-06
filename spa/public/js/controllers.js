@@ -41,4 +41,6 @@ angular.module('movieApp.controllers',[]).controller('MovieListController',funct
     };
 
     $scope.loadMovie();
+}).controller('FeatureViewController',function($scope,$stateParams,Feature){
+    //This is a placeholder. Code to follow
 });
