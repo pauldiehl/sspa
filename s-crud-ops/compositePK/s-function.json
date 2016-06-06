@@ -1,0 +1,227 @@
+{
+  "name": "compositePK",
+  "runtime": "nodejs4.3",
+  "description": "Serverless Lambda function for project: s-crud-ops",
+  "customName": false,
+  "customRole": false,
+  "handler": "handler.handler",
+  "timeout": 6,
+  "memorySize": 1024,
+  "authorizer": {},
+  "custom": {
+    "excludePatterns": []
+  },
+  "endpoints": [
+    {
+      "path": "cpk/{table}/{hash}/{range}",
+      "method": "GET",
+      "type": "AWS",
+      "authorizationType": "none",
+      "authorizerFunction": false,
+      "apiKeyRequired": false,
+      "requestParameters": {},
+      "requestTemplates": {
+		"application/json": {
+			"table": "$input.params('table')",
+			"hash": "$input.params('hash')",
+			"range": "$input.params('range')",
+      		"operation" : "$context.httpMethod"
+	    	}
+      	},
+      "responses": {
+        "400": {
+          "statusCode": "400"
+        },
+        "default": {
+          "statusCode": "200",
+          "responseParameters": {},
+          "responseModels": {
+            "application/json;charset=UTF-8": "Empty"
+          },
+          "responseTemplates": {
+            "application/json;charset=UTF-8": ""
+          }
+        }
+      }
+    },
+    {
+      "path": "cpk/{table}/{hash}/{range}/{hashID}/{rangeID}",
+      "method": "GET",
+      "type": "AWS",
+      "authorizationType": "none",
+      "authorizerFunction": false,
+      "apiKeyRequired": false,
+      "requestParameters": {},
+      "requestTemplates": {
+		"application/json": {
+			"table": "$input.params('table')",
+		    "hash": "$input.params('hash')",
+			"range": "$input.params('range')",
+      		"hashID": "$input.params('hashID')",
+			"rangeID": "$input.params('rangeID')",
+      		"operation" : "$context.httpMethod"
+    		}
+  		},
+      "responses": {
+        "400": {
+          "statusCode": "400"
+        },
+        "default": {
+          "statusCode": "200",
+          "responseParameters": {},
+          "responseModels": {
+            "application/json;charset=UTF-8": "Empty"
+          },
+          "responseTemplates": {
+            "application/json;charset=UTF-8": ""
+          }
+        }
+      }
+    },
+    {
+      "path": "cpk/{table}/{hash}/{range}/{hashID}",
+      "method": "GET",
+      "type": "AWS",
+      "authorizationType": "none",
+      "authorizerFunction": false,
+      "apiKeyRequired": false,
+      "requestParameters": {},
+      "requestTemplates": {
+		"application/json": {
+			"table": "$input.params('table')",
+			"hash": "$input.params('hash')",
+			"range": "$input.params('range')",
+      		"hashID": "$input.params('hashID')",
+      		"operation" : "$context.httpMethod"
+	    	}
+      	},
+      "responses": {
+        "400": {
+          "statusCode": "400"
+        },
+        "default": {
+          "statusCode": "200",
+          "responseParameters": {},
+          "responseModels": {
+            "application/json;charset=UTF-8": "Empty"
+          },
+          "responseTemplates": {
+            "application/json;charset=UTF-8": ""
+          }
+        }
+      }
+    },
+ 	{
+      "path": "cpk/{table}/{hash}/{range}",
+      "method": "POST",
+      "type": "AWS",
+      "authorizationType": "none",
+      "authorizerFunction": false,
+      "apiKeyRequired": false,
+      "requestParameters": {},
+      "requestTemplates": {
+        "application/json": {
+			"table": "$input.params('table')",
+      		"hash": "$input.params('hash')",
+      		"range": "$input.params('range')",
+      		"body" : "$input.json('$')",
+      		"operation" : "$context.httpMethod"
+	    }
+      },
+      "responses": {
+        "400": {
+          "statusCode": "400"
+        },
+        "default": {
+          "statusCode": "200",
+          "responseParameters": {},
+          "responseModels": {
+            "application/json;charset=UTF-8": "Empty"
+          },
+          "responseTemplates": {
+            "application/json;charset=UTF-8": ""
+          }
+        }
+      }
+    },
+	{
+      "path": "cpk/{table}/{hash}/{range}/{hashID}/{rangeID}",
+      "method": "PUT",
+      "type": "AWS",
+      "authorizationType": "none",
+      "authorizerFunction": false,
+      "apiKeyRequired": false,
+      "requestParameters": {},
+      "requestTemplates": {
+        "application/json": {
+			"table": "$input.params('table')",
+		    "hash": "$input.params('hash')",
+		    "range": "$input.params('range')",
+      		"hashID": "$input.params('hashID')",
+			"rangeID": "$input.params('rangeID')",
+      		"body" : "$input.json('$')",
+      		"operation" : "$context.httpMethod"
+	    }
+      },
+      "responses": {
+        "400": {
+          "statusCode": "400"
+        },
+        "default": {
+          "statusCode": "200",
+          "responseParameters": {},
+          "responseModels": {
+            "application/json;charset=UTF-8": "Empty"
+          },
+          "responseTemplates": {
+            "application/json;charset=UTF-8": ""
+          }
+        }
+      }
+    },
+	{
+      "path": "cpk/{table}/{hash}/{range}/{hashID}/{rangeID}",
+      "method": "DELETE",
+      "type": "AWS",
+      "authorizationType": "none",
+      "authorizerFunction": false,
+      "apiKeyRequired": false,
+      "requestParameters": {},
+      "requestTemplates": {
+        "application/json": {
+			"table": "$input.params('table')",
+			"hash": "$input.params('hash')",
+			"range": "$input.params('range')",
+      		"hashID": "$input.params('hashID')",
+			"rangeID": "$input.params('rangeID')",
+      		"operation" : "$context.httpMethod"
+	    }
+      },
+      "responses": {
+        "400": {
+          "statusCode": "400"
+        },
+        "default": {
+          "statusCode": "200",
+          "responseParameters": {},
+          "responseModels": {
+            "application/json;charset=UTF-8": "Empty"
+          },
+          "responseTemplates": {
+            "application/json;charset=UTF-8": ""
+          }
+        }
+      }
+    }
+  ],
+  "events": [],
+  "environment": {
+    "SERVERLESS_PROJECT": "${project}",
+    "SERVERLESS_STAGE": "${stage}",
+    "SERVERLESS_REGION": "${region}"
+  },
+  "vpc": {
+    "securityGroupIds": [],
+    "subnetIds": []
+  }
+}
