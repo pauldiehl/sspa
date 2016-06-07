@@ -17,6 +17,10 @@ angular.module('movieApp').config(function($stateProvider,$httpProvider){
         url:'/movies/:id/edit',
         templateUrl:'partials/movie-edit.html',
         controller:'MovieEditController'
+    }).state('services',{
+        url:'/services',
+        templateUrl:'partials/services.html',
+        controller:'servicesViewController'
     }).state("otherwise", {
         url: "*path",
         templateUrl: "partials/error-data.html"
