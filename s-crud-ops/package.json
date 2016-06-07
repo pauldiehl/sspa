@@ -2,12 +2,13 @@
   "name": "s-crud-ops",
   "version": "0.0.1",
   "description": "A Serverless Project and its Serverless Plugin dependencies.",
-  "author": "me",
+  "author": "Paul Diehl",
   "license": "MIT",
   "private": false,
   "repository": {
     "type": "git",
-    "url": "git://github.com/"
+    "url": "git://github.com/pauldiehl/s-crud-ops"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "homepage": "https://github.com/pauldiehl/s-crud-ops#readme"
 }
