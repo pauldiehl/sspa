@@ -13,7 +13,7 @@
   },
   "endpoints": [
     {
-      "path": "api/{table}/{hash}",
+      "path": "spk/{table}/{hash}",
       "method": "GET",
       "type": "AWS",
       "authorizationType": "none",
@@ -44,7 +44,7 @@
       }
     },
     {
-      "path": "api/{table}/{hash}/{id}",
+      "path": "spk/{table}/{hash}/{id}",
       "method": "GET",
       "type": "AWS",
       "authorizationType": "none",
@@ -76,7 +76,7 @@
       }
     },
     {
-      "path": "api/{table}/{hash}/{id}/{attribute}",
+      "path": "spk/{table}/{hash}/{id}/{attribute}",
       "method": "GET",
       "type": "AWS",
       "authorizationType": "none",
@@ -109,7 +109,7 @@
       }
     },
  	{
-      "path": "api/{table}/{hash}",
+      "path": "spk/{table}/{hash}",
       "method": "POST",
       "type": "AWS",
       "authorizationType": "none",
@@ -141,7 +141,7 @@
       }
     },
 	{
-      "path": "api/{table}/{hash}/{id}",
+      "path": "spk/{table}/{hash}/{id}",
       "method": "PUT",
       "type": "AWS",
       "authorizationType": "none",
@@ -174,7 +174,7 @@
       }
     },
 	{
-      "path": "api/{table}/{hash}/{id}",
+      "path": "spk/{table}/{hash}/{id}",
       "method": "DELETE",
       "type": "AWS",
       "authorizationType": "none",

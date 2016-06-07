@@ -1,51 +1,45 @@
-var doc = require('dynamodb-doc');
-var dynamo = new doc.DynamoDB();
-var getParams = require('./getParams.js');
+var params = module.exports;
 
-module.exports = function(event, context) {
+params.put = function(event, payload) {
+	payload.Item = event.body;
+	payload.Item[event.hash] = Math.floor(Math.random() * 1000000000);
+    payload.Item["createdDate"] = new Date().getTime();
+    return payload;
+};
 
-console.log('Received event:', JSON.stringify(event, null, 2));
-    
-	var operation = event.operation,
-		payload = { TableName: event.table };
 
-	function callback(err, data) {
-      if (err) {
-          console.log(err, err.stack);
-          context.fail(err);
-      }
-      else {
-        context.succeed(data.hasOwnProperty('Item')  ? data.Item :  data.hasOwnProperty('Items') ? data.Items : data );
-      }
-    }
+params.scan = function(event, payload) {
+	payload.FilterExpression = "#attr = :val";
+	payload.ExpressionAttributeNames = { "#attr" : event.attribute };
+	payload.ExpressionAttributeValues = { ":val" : parseInt(event.id) };
+	return payload;
+};
+
+params.getKey = function(event) {
+	var key = {};
+	key[event.hash] = parseInt(event.id);
+	return key;
+};
+
+
+params.update = function(event, payload) {
+	payload.Key = params.getKey(event);
 	
-    switch (operation) {
-        case 'GET':
-        	if (event.hasOwnProperty('attribute')) {
-        	    payload = getParams.scan(event, payload);
-        		dynamo.scan(payload, callback);
-   			}
-   			else if (event.hasOwnProperty('id')) {
-   				payload.Key = getParams.getKey(event);
-   				dynamo.getItem(payload, callback);
-   			}
-   			else {
-   				dynamo.scan(payload, callback);
-   			}
-            break;
-        case 'POST':
-        		payload = getParams.post(event, payload);
-        		dynamo.putItem(payload, callback);
-            break;
-        case 'PUT':
-        		payload = getParams.put(event, payload);
-				dynamo.putItem(payload, callback);
-            break;
-        case 'DELETE': 
-        		payload.Key = getParams.getKey(event);
-        		dynamo.deleteItem(payload, callback); 
-            break;
-        default:
-            callback(new Error('Unrecognized operation: ' + operation));
-    }
-}
+	var expression = "set ";
+	var attributes = {};
+	
+	for (var prop in event.body) {
+		if (prop !== event.hash){
+			var attrName = ":" + prop;
+			expression += prop + " = " + attrName + ",";
+			attributes[attrName] = event.body[prop];
+		}
+	};
+	
+	expression = expression.substring(0, expression.length - 1);
+	
+	payload.UpdateExpression = expression;
+	payload.ExpressionAttributeValues = attributes;
+	
+	return payload;
+};

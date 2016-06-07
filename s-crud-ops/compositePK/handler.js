@@ -6,7 +6,7 @@ let lib = require('lib');
 
 exports.handler = (event, context) => {
 
-//console.log('Received event:', JSON.stringify(event, null, 2));
+console.log('Received event:', JSON.stringify(event, null, 2));
     
 	var operation = event.operation,
 		payload = { TableName: event.table };
@@ -36,12 +36,12 @@ exports.handler = (event, context) => {
    			}
             break;
         case 'POST':
-        		payload = lib.post(event, payload);
+        		payload = lib.put(event, payload);
         		dynamo.putItem(payload, callback);
             break;
         case 'PUT':
-        		payload = lib.put(event, payload);
-				dynamo.putItem(payload, callback);
+        		payload = lib.update(event, payload);
+				dynamo.updateItem(payload, callback);
             break;
         case 'DELETE': 
         		payload.Key = lib.getKey(event);

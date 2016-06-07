@@ -1,11 +1,10 @@
 var params = module.exports;
 
-params.post = function(event, payload) {
+params.put = function(event, payload) {
 	payload.Item = event.body;
     payload.Item["createdDate"] = new Date().getTime();
     return payload;
 };
-
 
 params.query = function(event, payload) {
 	payload.KeyConditionExpression = "#attr = :val";
@@ -21,27 +20,24 @@ params.getKey = function(event) {
 	return key;
 };
 
-params.put = function(event, payload) {
-	payload.Item = event.body;
+params.update = function(event, payload) {
+	payload.Key = params.getKey(event);
+	
+	var expression = "set ";
+	var attributes = {};
+	
+	for (var prop in event.body) {
+		if (prop !== event.hash && prop !== event.range){
+			var attrName = ":" + prop;
+			expression += prop + " = " + attrName + ",";
+			attributes[attrName] = event.body[prop];
+		}
+	};
+	
+	expression = expression.substring(0, expression.length - 1);
+	
+	payload.UpdateExpression = expression;
+	payload.ExpressionAttributeValues = attributes;
+	
 	return payload;
 };
-// 
-// params.update = function(event, payload) {
-// 	payload.Item = //
-// 	
-// 	
-// 	return payload;
-// };
-
-
-//updateItem
-// AttributeUpdates: { images: { Action: "ADD", Value: item }
-// 
-// or
-// 
-// params.UpdateExpression = "set #a = :x + :y";
-// params.ExpressionAttributeNames = {"#a" : "Description"};
-// params.ExpressionAttributeValues = {":x" : 20,
-//                                     ":y" : 45,
-//                                     ":MAX" : 100,
-//                                     ":correct" : "is right!!"};
