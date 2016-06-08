@@ -1,14 +1,15 @@
-/**
- * Created by Sandeep on 01/06/14.
- */
-angular.module('movieApp.controllers',[]).controller('MovieListController',function($scope,$state,popupService,$window,Movie){
+angular.module('movieApp.controllers',[]).controller('MovieListController',function($scope,$state,$stateParams,popupService,$window,Movie){
 
     $scope.movies=Movie.query();
 
     $scope.deleteMovie=function(movie){
         if(popupService.showPopup('Really delete this?')){
             movie.$delete(function(){
-                $window.location.href='';
+                $state.transitionTo($state.current, $stateParams, {
+                    reload: true,
+                    inherit: false,
+                    notify: true
+                });
             });
         }
     }
@@ -40,4 +41,8 @@ angular.module('movieApp.controllers',[]).controller('MovieListController',funct
     };
 
     $scope.loadMovie();
+}).controller('screensViewController',function($scope,$stateParams,screens){
+//This is a placeholder. Code to follow
+}).controller('servicesViewController',function($scope,$stateParams,services){
+    //This is a placeholder. Code to follow
 });

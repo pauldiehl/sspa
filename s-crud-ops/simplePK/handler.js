@@ -1,8 +1,10 @@
-var doc = require('dynamodb-doc');
-var dynamo = new doc.DynamoDB();
-var getParams = require('./getParams.js');
+'use strict';
 
-module.exports = function(event, context) {
+let doc = require('dynamodb-doc');
+let dynamo = new doc.DynamoDB();
+let lib = require('lib');
+
+exports.handler = (event, context) => {
 
 console.log('Received event:', JSON.stringify(event, null, 2));
     
@@ -22,11 +24,11 @@ console.log('Received event:', JSON.stringify(event, null, 2));
     switch (operation) {
         case 'GET':
         	if (event.hasOwnProperty('attribute')) {
-        	    payload = getParams.scan(event, payload);
+        	    payload = lib.scan(event, payload);
         		dynamo.scan(payload, callback);
    			}
    			else if (event.hasOwnProperty('id')) {
-   				payload.Key = getParams.getKey(event);
+   				payload.Key = lib.getKey(event);
    				dynamo.getItem(payload, callback);
    			}
    			else {
@@ -34,18 +36,18 @@ console.log('Received event:', JSON.stringify(event, null, 2));
    			}
             break;
         case 'POST':
-        		payload = getParams.post(event, payload);
+        		payload = lib.put(event, payload);
         		dynamo.putItem(payload, callback);
             break;
         case 'PUT':
-        		payload = getParams.put(event, payload);
-				dynamo.putItem(payload, callback);
+        		payload = lib.update(event, payload);
+				dynamo.updateItem(payload, callback);
             break;
         case 'DELETE': 
-        		payload.Key = getParams.getKey(event);
+        		payload.Key = lib.getKey(event);
         		dynamo.deleteItem(payload, callback); 
-            break;
+        	break;
         default:
             callback(new Error('Unrecognized operation: ' + operation));
     }
-}
+};

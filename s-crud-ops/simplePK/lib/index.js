@@ -1,6 +1,6 @@
 var params = module.exports;
 
-params.post = function(event, payload) {
+params.put = function(event, payload) {
 	payload.Item = event.body;
 	payload.Item[event.hash] = Math.floor(Math.random() * 1000000000);
     payload.Item["createdDate"] = new Date().getTime();
@@ -21,7 +21,25 @@ params.getKey = function(event) {
 	return key;
 };
 
-params.put = function(event, payload) {
-	payload.Item = event.body;
+
+params.update = function(event, payload) {
+	payload.Key = params.getKey(event);
+	
+	var expression = "set ";
+	var attributes = {};
+	
+	for (var prop in event.body) {
+		if (prop !== event.hash){
+			var attrName = ":" + prop;
+			expression += prop + " = " + attrName + ",";
+			attributes[attrName] = event.body[prop];
+		}
+	};
+	
+	expression = expression.substring(0, expression.length - 1);
+	
+	payload.UpdateExpression = expression;
+	payload.ExpressionAttributeValues = attributes;
+	
 	return payload;
 };

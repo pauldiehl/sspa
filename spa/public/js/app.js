@@ -1,7 +1,3 @@
-/**
- * Created by Sandeep on 01/06/14.
- */
-
 angular.module('movieApp',['ui.router','ngResource','movieApp.controllers','movieApp.services']);
 
 angular.module('movieApp').config(function($stateProvider,$httpProvider){
@@ -21,6 +17,14 @@ angular.module('movieApp').config(function($stateProvider,$httpProvider){
         url:'/movies/:id/edit',
         templateUrl:'partials/movie-edit.html',
         controller:'MovieEditController'
+    }).state('services',{
+        url:'/services',
+        templateUrl:'partials/services.html',
+        controller:'servicesViewController'
+    }).state('screens',{
+      url:'/screens',
+      templateUrl:'partials/screens.html',
+      controller:'screensViewController'
     }).state("otherwise", {
         url: "*path",
         templateUrl: "partials/error-data.html"
