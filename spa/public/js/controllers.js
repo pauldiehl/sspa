@@ -41,4 +41,6 @@ angular.module('movieApp.controllers',[]).controller('MovieListController',funct
     };
 
     $scope.loadMovie();
+}).controller('screensViewController',function($scope,$stateParams,screens){
+//This is a placeholder. Code to follow
 });

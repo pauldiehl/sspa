@@ -23,4 +23,8 @@ angular.module('movieApp').config(function($stateProvider,$httpProvider){
     });
 }).run(function($state){
    $state.go('movies');
+}).state('screens',{
+  url:'/screens',
+  templateUrl:'partials/screens.html',
+  controller:'screensViewController'
 });
