@@ -17,14 +17,18 @@ angular.module('movieApp').config(function($stateProvider,$httpProvider){
         url:'/movies/:id/edit',
         templateUrl:'partials/movie-edit.html',
         controller:'MovieEditController'
+    }).state('services',{
+        url:'/services',
+        templateUrl:'partials/services.html',
+        controller:'servicesViewController'
+    }).state('screens',{
+      url:'/screens',
+      templateUrl:'partials/screens.html',
+      controller:'screensViewController'
     }).state("otherwise", {
         url: "*path",
         templateUrl: "partials/error-data.html"
     });
 }).run(function($state){
    $state.go('movies');
-}).state('screens',{
-  url:'/screens',
-  templateUrl:'partials/screens.html',
-  controller:'screensViewController'
 });

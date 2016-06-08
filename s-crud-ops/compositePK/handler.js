@@ -23,11 +23,11 @@ console.log('Received event:', JSON.stringify(event, null, 2));
 	
     switch (operation) {
         case 'GET':
-        	if (event.hasOwnProperty('attribute')) {
-        	    payload = lib.scan(event, payload);
-        		dynamo.scan(payload, callback);
+        	if (event.hasOwnProperty('hashID') && !event.hasOwnProperty('rangeID')) {
+        	    payload = lib.query(event, payload);
+        		dynamo.query(payload, callback);
    			}
-   			else if (event.hasOwnProperty('id')) {
+   			else if (event.hasOwnProperty('hashID') && event.hasOwnProperty('rangeID')) {
    				payload.Key = lib.getKey(event);
    				dynamo.getItem(payload, callback);
    			}
