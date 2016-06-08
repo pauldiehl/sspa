@@ -1,8 +1,9 @@
 angular.module('movieApp',['ui.router','ngResource','movieApp.controllers','movieApp.services']);
 
-angular.module('movieApp').config(function($stateProvider,$httpProvider){
+angular.module('movieApp').config(function($stateProvider,$httpProvider,$locationProvider){
+    $locationProvider.html5Mode(true);
     $stateProvider.state('movies',{
-        url:'/movies',
+        url:'/',
         templateUrl:'partials/movies.html',
         controller:'MovieListController'
     }).state('viewMovie',{
