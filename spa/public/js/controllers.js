@@ -1,4 +1,4 @@
-angular.module('movieApp.controllers',[]).controller('MovieListController',function($scope,$state,$stateParams,popupService,$window,Movie){
+angular.module('protometheusApp.controllers',[]).controller('MovieListController',function($scope,$state,$stateParams,popupService,$window,Movie){
 
     $scope.movies=Movie.query();
 

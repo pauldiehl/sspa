@@ -1,6 +1,6 @@
-angular.module('movieApp',['ui.router','ngResource','movieApp.controllers','movieApp.services']);
+angular.module('protometheusApp',['ui.router','ngResource','protometheusApp.controllers','protometheusApp.services']);
 
-angular.module('movieApp').config(function($stateProvider,$httpProvider,$locationProvider){
+angular.module('protometheusApp').config(function($stateProvider,$httpProvider,$locationProvider){
     $locationProvider.html5Mode(true);
     $stateProvider.state('movies',{
         url:'/',
