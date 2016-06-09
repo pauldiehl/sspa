@@ -2,34 +2,50 @@ angular.module('protometheusApp',['ui.router','ngResource','protometheusApp.cont
 
 angular.module('protometheusApp').config(function($stateProvider,$httpProvider,$locationProvider){
     $locationProvider.html5Mode(true);
-    $stateProvider.state('movies',{
-        url:'/',
-        templateUrl:'partials/movies.html',
-        controller:'MovieListController'
-    }).state('viewMovie',{
-       url:'/movies/:id/view',
-       templateUrl:'partials/movie-view.html',
-       controller:'MovieViewController'
-    }).state('newMovie',{
-        url:'/movies/new',
-        templateUrl:'partials/movie-add.html',
-        controller:'MovieCreateController'
-    }).state('editMovie',{
-        url:'/movies/:id/edit',
-        templateUrl:'partials/movie-edit.html',
-        controller:'MovieEditController'
-    }).state('services',{
-        url:'/services',
-        templateUrl:'partials/services.html',
-        controller:'servicesViewController'
-    }).state('screens',{
+    
+    // States for Flows
+    $stateProvider.state('flows',{
+        url:'/', //default URL for now
+        templateUrl:'partials/flows.html',
+        controller:'FlowListController'
+    })
+    .state('viewFlow',{
+       url:'/flows/:flowID/view',
+       templateUrl:'partials/flow-view.html',
+       controller:'FlowViewController'
+    }).state('newFlow',{
+        url:'/flows/new',
+        templateUrl:'partials/flow-add.html',
+        controller:'FlowCreateController'
+    }).state('editFlow',{
+        url:'/flows/:flowID/edit',
+        templateUrl:'partials/flow-edit.html',
+        controller:'FlowEditController'
+    })
+    
+       
+    // States for Screens
+    .state('screens',{
       url:'/screens',
       templateUrl:'partials/screens.html',
-      controller:'screensViewController'
-    }).state("otherwise", {
+      controller:'ScreensViewController'
+    })
+    //add viewScreen, newScreen, editScreen (DELETE THIS LINE WHEN FINISHED)
+    
+     
+    // States for Services
+    .state('services',{
+        url:'/services',
+        templateUrl:'partials/services.html',
+        controller:'ServicesViewController'
+    })
+    //add viewService, newService, editService (DELETE THIS LINE WHEN FINISHED)
+   
+    
+    .state("otherwise", {
         url: "*path",
         templateUrl: "partials/error-data.html"
     });
 }).run(function($state){
-   $state.go('movies');
+   $state.go('flows');
 });
