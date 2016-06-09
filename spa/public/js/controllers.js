@@ -1,10 +1,13 @@
-angular.module('movieApp.controllers',[]).controller('MovieListController',function($scope,$state,$stateParams,popupService,$window,Movie){
+angular.module('protometheusApp.controllers',[])
 
-    $scope.movies=Movie.query();
+//Flow Controllers
+.controller('FlowListController',function($scope,$state,$stateParams,popupService,$window,FlowFactory){
 
-    $scope.deleteMovie=function(movie){
+    $scope.flows=FlowFactory.query();
+
+    $scope.deleteFlow=function(flow){
         if(popupService.showPopup('Really delete this?')){
-            movie.$delete(function(){
+            flow.$delete(function(){
                 $state.transitionTo($state.current, $stateParams, {
                     reload: true,
                     inherit: false,
@@ -14,35 +17,44 @@ angular.module('movieApp.controllers',[]).controller('MovieListController',funct
         }
     }
 
-}).controller('MovieViewController',function($scope,$stateParams,Movie){
+}).controller('FlowViewController',function($scope,$stateParams,FlowFactory){
 
-    $scope.movie=Movie.get({id:$stateParams.id});
+    $scope.flow=FlowFactory.get({flowID:$stateParams.flowID});
 
-}).controller('MovieCreateController',function($scope,$state,$stateParams,Movie){
+}).controller('FlowCreateController',function($scope,$state,$stateParams,FlowFactory){
 
-    $scope.movie=new Movie();
+    $scope.flow=new FlowFactory();
 
-    $scope.addMovie=function(){
-        $scope.movie.$save(function(){
-            $state.go('movies');
+    $scope.addFlow=function(){
+        $scope.flow.$save(function(){
+            $state.go('flows');
         });
     }
+}).controller('FlowEditController',function($scope,$state,$stateParams,FlowFactory){
 
-}).controller('MovieEditController',function($scope,$state,$stateParams,Movie){
-
-    $scope.updateMovie=function(){
-        $scope.movie.$update(function(){
-            $state.go('movies');
+    $scope.updateFlow=function(){
+        $scope.flow.$update(function(){
+            $state.go('flows');
         });
     };
 
-    $scope.loadMovie=function(){
-        $scope.movie=Movie.get({id:$stateParams.id});
+    $scope.loadFlow=function(){
+        $scope.flow=FlowFactory.get({flowID:$stateParams.flowID});
     };
 
-    $scope.loadMovie();
-}).controller('screensViewController',function($scope,$stateParams,screens){
+    $scope.loadFlow();
+})
+
+
+//Screens Controllers
+.controller('ScreensViewController',function($scope,$stateParams,ScreensFactory){
 //This is a placeholder. Code to follow
-}).controller('servicesViewController',function($scope,$stateParams,services){
+})
+//Add List, View, Create, Edit Controllers (DELETE THIS LINE WHEN FINISHED)
+
+
+//Services Controllers
+.controller('ServicesViewController',function($scope,$stateParams,ServicesFactory){
     //This is a placeholder. Code to follow
 });
+//Add List, View, Create, Edit Controllers (DELETE THIS LINE WHEN FINISHED)
