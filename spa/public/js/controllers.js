@@ -47,14 +47,14 @@ angular.module('protometheusApp.controllers',[])
 
 
 //Screens Controllers
-.controller('ScreensViewController',function($scope,$stateParams,ScreensFactory){
+.controller('ScreensListController',function($scope,$stateParams,ScreensFactory){
 //This is a placeholder. Code to follow
 })
 //Add List, View, Create, Edit Controllers (DELETE THIS LINE WHEN FINISHED)
 
 
 //Services Controllers
-.controller('ServicesViewController',function($scope,$stateParams,ServicesFactory){
+.controller('ServicesListController',function($scope,$stateParams,ServicesFactory){
     //This is a placeholder. Code to follow
 });
 //Add List, View, Create, Edit Controllers (DELETE THIS LINE WHEN FINISHED)

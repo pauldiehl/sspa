@@ -6,7 +6,7 @@ angular.module('protometheusApp').config(function($stateProvider,$httpProvider,$
     // States for Flows
     $stateProvider.state('flows',{
         url:'/', //default URL for now
-        templateUrl:'partials/flows.html',
+        templateUrl:'partials/flows-list.html',
         controller:'FlowListController'
     })
     .state('viewFlow',{
@@ -27,8 +27,8 @@ angular.module('protometheusApp').config(function($stateProvider,$httpProvider,$
     // States for Screens
     .state('screens',{
       url:'/screens',
-      templateUrl:'partials/screens.html',
-      controller:'ScreensViewController'
+      templateUrl:'partials/screens-list.html',
+      controller:'ScreensListController'
     })
     //add viewScreen, newScreen, editScreen (DELETE THIS LINE WHEN FINISHED)
     
@@ -36,8 +36,8 @@ angular.module('protometheusApp').config(function($stateProvider,$httpProvider,$
     // States for Services
     .state('services',{
         url:'/services',
-        templateUrl:'partials/services.html',
-        controller:'ServicesViewController'
+        templateUrl:'partials/services-list.html',
+        controller:'ServicesListController'
     })
     //add viewService, newService, editService (DELETE THIS LINE WHEN FINISHED)
    
