@@ -1,10 +1,13 @@
-angular.module('movieApp.controllers',[]).controller('MovieListController',function($scope,$state,$stateParams,popupService,$window,Movie){
+angular.module('protometheusApp.controllers',[])
 
-    $scope.movies=Movie.query();
+//Flow Controllers
+.controller('FlowListController',function($scope,$state,$stateParams,popupService,$window,FlowFactory,$http){
 
-    $scope.deleteMovie=function(movie){
+    $scope.flows =FlowFactory.query();
+
+    $scope.deleteFlow=function(flow){
         if(popupService.showPopup('Really delete this?')){
-            movie.$delete(function(){
+            flow.$delete(function(){
                 $state.transitionTo($state.current, $stateParams, {
                     reload: true,
                     inherit: false,
@@ -13,36 +16,124 @@ angular.module('movieApp.controllers',[]).controller('MovieListController',funct
             });
         }
     }
+    
+}).controller('FlowViewController',function($scope,$stateParams,FlowFactory){
 
-}).controller('MovieViewController',function($scope,$stateParams,Movie){
+    $scope.flow=FlowFactory.get({flowID:$stateParams.flowID});
 
-    $scope.movie=Movie.get({id:$stateParams.id});
+}).controller('FlowCreateController',function($scope,$state,$stateParams,FlowFactory){
 
-}).controller('MovieCreateController',function($scope,$state,$stateParams,Movie){
+    $scope.flow=new FlowFactory();
 
-    $scope.movie=new Movie();
-
-    $scope.addMovie=function(){
-        $scope.movie.$save(function(){
-            $state.go('movies');
+    $scope.addFlow=function(){
+        $scope.flow.$save(function(){
+            $state.go('flows');
         });
     }
+}).controller('FlowEditController',function($scope,$state,$stateParams,FlowFactory){
 
-}).controller('MovieEditController',function($scope,$state,$stateParams,Movie){
-
-    $scope.updateMovie=function(){
-        $scope.movie.$update(function(){
-            $state.go('movies');
+    $scope.updateFlow=function(){
+        $scope.flow.$update(function(){
+            $state.go('flows');
         });
     };
 
-    $scope.loadMovie=function(){
-        $scope.movie=Movie.get({id:$stateParams.id});
+    $scope.loadFlow=function(){
+        $scope.flow=FlowFactory.get({flowID:$stateParams.flowID});
     };
 
-    $scope.loadMovie();
-}).controller('screensViewController',function($scope,$stateParams,screens){
-//This is a placeholder. Code to follow
-}).controller('servicesViewController',function($scope,$stateParams,services){
-    //This is a placeholder. Code to follow
+    $scope.loadFlow();
+})
+
+
+//Screens Controllers
+
+.controller('ScreenListController',function($scope,$state,$stateParams,popupService,$window,ScreenFactory){
+
+    $scope.screens = ScreenFactory.query();
+
+    $scope.deleteScreen=function(screen){
+        if(popupService.showPopup('Really delete this?')){
+            screen.$delete(function(){
+                $state.transitionTo($state.current, $stateParams, {
+                    reload: true,
+                    inherit: false,
+                    notify: true
+                });
+            });
+        }
+    }
+    
+}).controller('ScreenViewController',function($scope,$stateParams,ScreenFactory){
+
+    $scope.screen=ScreenFactory.get({screenID:$stateParams.screenID});
+
+}).controller('ScreenCreateController',function($scope,$state,$stateParams,ScreenFactory){
+
+    $scope.screen=new ScreenFactory();
+
+    $scope.addScreen=function(){
+        $scope.screen.$save(function(){
+            $state.go('screens');
+        });
+    }
+}).controller('ScreenEditController',function($scope,$state,$stateParams,ScreenFactory){
+
+    $scope.updateScreen=function(){
+        $scope.screen.$update(function(){
+            $state.go('screens');
+        });
+    };
+
+    $scope.loadScreen=function(){
+        $scope.screen=ScreenFactory.get({screenID:$stateParams.screenID});
+    };
+
+    $scope.loadScreen();
+})
+
+
+//Services Controllers
+.controller('ServiceListController',function($scope,$state,$stateParams,popupService,$window,ServiceFactory){
+
+    $scope.services = ServiceFactory.query();
+
+    $scope.deleteService=function(service){
+        if(popupService.showPopup('Really delete this?')){
+            service.$delete(function(){
+                $state.transitionTo($state.current, $stateParams, {
+                    reload: true,
+                    inherit: false,
+                    notify: true
+                });
+            });
+        }
+    }
+    
+}).controller('ServiceViewController',function($scope,$stateParams,ServiceFactory){
+
+    $scope.service=ServiceFactory.get({serviceID:$stateParams.serviceID});
+
+}).controller('ServiceCreateController',function($scope,$state,$stateParams,ServiceFactory){
+
+    $scope.service=new ServiceFactory();
+
+    $scope.addService=function(){
+        $scope.service.$save(function(){
+            $state.go('services');
+        });
+    }
+}).controller('ServiceEditController',function($scope,$state,$stateParams,ServiceFactory){
+
+    $scope.updateService=function(){
+        $scope.service.$update(function(){
+            $state.go('services');
+        });
+    };
+
+    $scope.loadService=function(){
+        $scope.service=ServiceFactory.get({serviceID:$stateParams.serviceID});
+    };
+
+    $scope.loadService();
 });

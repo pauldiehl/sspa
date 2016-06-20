@@ -1,0 +1,15 @@
+<a ui-sref="newScreen" class="btn-primary btn-lg nodecoration">Add New Screen</a>
+<table class="table movietable">
+    <tr>
+        <td><h3>All Screens</h3></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr ng-repeat="screen in screens">
+        <td>{{screen.title}}</td>
+        <td>
+            <a class="btn btn-primary" ui-sref="viewScreen({screenID:screen.screenID})">View</a>
+            <a class="btn btn-danger"  ng-click="deleteScreen(screen)">Delete</a>
+        </td>
+    </tr>
+</table>

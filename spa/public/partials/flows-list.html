@@ -1,0 +1,16 @@
+<a ui-sref="newFlow" class="btn-primary btn-lg nodecoration">Add New Flow</a>
+<table class="table movietable">
+    <tr>
+        <td><h3>All Flows</h3></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr ng-repeat="flow in flows">
+        <td>{{flow.title}}</td>
+        <!--<td ng-show="response">{{response.data}}</td>-->
+        <td>
+            <a class="btn btn-primary" ui-sref="viewFlow({flowID:flow.flowID})">View</a>
+            <a class="btn btn-danger"  ng-click="deleteFlow(flow)">Delete</a>
+        </td>
+    </tr>
+</table>
