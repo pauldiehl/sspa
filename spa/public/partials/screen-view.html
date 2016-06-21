@@ -8,10 +8,13 @@
         <td>{{screen.title}}</td>
     </tr>
      <tr>
-        <td>Description</td>
-        <td>{{screen.description}}</td>
+		<!-- Additional Reference -->
+		<!-- https://havecamerawilltravel.com/photographer/how-allow-public-access-amazon-bucket -->
+        <td>Photo</td>
+        <td><img ng-src="https://s3.amazonaws.com/protometheus-photos/{{screen.imageName}}" alt="Image of screen" /></td>
     </tr>
 </table>
 <div>
     <a class="btn btn-primary" ui-sref="editScreen({screenID:screen.screenID})">Edit</a>
 </div>
+
