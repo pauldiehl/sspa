@@ -116,7 +116,7 @@ angular.module('protometheusApp.controllers',[])
 
     $scope.runService=function(service){
            $http({
-               method: service.method, //replace out with service.method
+               method: service.methodResource, //replace out with service.method
                url: service.urlResource //replace out with service.urlResource
            }).then(function successCallback(response) {
                 $scope.response = response;

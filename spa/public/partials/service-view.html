@@ -13,7 +13,7 @@
     </tr>
     <tr>
         <td>Method</td>
-        <td>{{service.method}}</td>
+        <td>{{service.methodResource}}</td>
     </tr>
     <tr>
         <td>URL</td>
@@ -32,6 +32,4 @@
     <a class="btn btn-primary" ui-sref="editService({serviceID:service.serviceID})">Edit</a>
     <a class="btn btn-primary" ng-click="runService(service)">Run</a>
 </div>
-<div ng-model="response">
-
-</div>
+<div>{{response}}</div>
