@@ -1,7 +1,7 @@
 angular.module('protometheusApp.controllers',[])
 
 //Flow Controllers
-.controller('FlowListController',function($scope,$state,$stateParams,popupService,$window,FlowFactory,$http){
+.controller('FlowListController',function($scope,$state,$stateParams,popupService,$window,FlowFactory){
 
     $scope.flows =FlowFactory.query();
 
