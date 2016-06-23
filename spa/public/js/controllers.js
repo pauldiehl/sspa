@@ -16,7 +16,7 @@ angular.module('protometheusApp.controllers',[])
             });
         }
     }
-    
+
 }).controller('FlowViewController',function($scope,$stateParams,FlowFactory){
 
     $scope.flow=FlowFactory.get({flowID:$stateParams.flowID});
@@ -63,7 +63,7 @@ angular.module('protometheusApp.controllers',[])
             });
         }
     }
-    
+
 }).controller('ScreenViewController',function($scope,$stateParams,ScreenFactory){
 
     $scope.screen=ScreenFactory.get({screenID:$stateParams.screenID});
@@ -109,10 +109,21 @@ angular.module('protometheusApp.controllers',[])
             });
         }
     }
-    
-}).controller('ServiceViewController',function($scope,$stateParams,ServiceFactory){
+
+}).controller('ServiceViewController',function($scope,$stateParams,ServiceFactory, $http){
 
     $scope.service=ServiceFactory.get({serviceID:$stateParams.serviceID});
+
+    $scope.runService=function(service){
+           $http({
+               method: service.method, //replace out with service.method
+               url: service.urlResource //replace out with service.urlResource
+           }).then(function successCallback(response) {
+                $scope.response = response;
+            }, function errorCallback(response) {
+                $scope.response = response;
+            });
+    }
 
 }).controller('ServiceCreateController',function($scope,$state,$stateParams,ServiceFactory){
 

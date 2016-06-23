@@ -30,5 +30,8 @@
 </table>
 <div>
     <a class="btn btn-primary" ui-sref="editService({serviceID:service.serviceID})">Edit</a>
-    <a class="btn btn-primary">Run</a>
+    <a class="btn btn-primary" ng-click="runService(service)">Run</a>
+</div>
+<div ng-model="response">
+
 </div>
