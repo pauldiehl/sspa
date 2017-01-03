@@ -7,8 +7,7 @@ To deploy bucket:
 
 - (0) npm install serverless -g (install serverless globally)
 - (1) cd /path/to/s-crud-ops
-- (2) npm install
-- (3) sls project install
+- (3) sls project install s-crud-ops
 - (3a) (select "dev" as stage)
 - (3b) (create a new profile; it will prompt you for your AWS access key id and secret key)
 - (3c) (select "us-east-1" as region)

@@ -1,14 +1,28 @@
 {
-  "name": "s-crud-ops",
-  "version": "0.0.1",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/s-crud-ops-0.0.1.tgz_1465336590121_0.4939107915852219"
+  },
+  "author": {
+    "name": "Paul Diehl"
+  },
+  "bugs": {
+    "url": "https://github.com/pauldiehl/s-crud-ops/issues"
+  },
+  "dependencies": {
+    "serverless-cors-plugin": "^0.4.2"
+  },
   "description": "A Serverless Project and its Serverless Plugin dependencies.",
-  "author": "Paul Diehl",
+  "devDependencies": {},
+  "homepage": "https://github.com/pauldiehl/s-crud-ops#readme",
   "license": "MIT",
+  "name": "s-crud-ops",
+  "optionalDependencies": {},
   "private": false,
   "repository": {
     "type": "git",
-    "url": "git://github.com/pauldiehl/s-crud-ops"
+    "url": "git://github.com/pauldiehl/s-crud-ops.git"
   },
-  "dependencies": {},
-  "homepage": "https://github.com/pauldiehl/s-crud-ops#readme"
+  "scripts": {},
+  "version": "0.0.1"
 }

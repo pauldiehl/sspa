@@ -9,7 +9,11 @@
   "memorySize": 1024,
   "authorizer": {},
   "custom": {
-    "excludePatterns": []
+    "excludePatterns": [],
+    "cors": {
+    "allowOrigin": "*",
+    "allowHeaders": ["Content-Type", "X-Amz-Date", "Authorization", "X-Api-Key"]
+  }
   },
   "endpoints": [
     {
@@ -21,13 +25,13 @@
       "apiKeyRequired": false,
       "requestParameters": {},
       "requestTemplates": {
-		"application/json": {
-			"table": "$input.params('table')",
-			"hash": "$input.params('hash')",
-			"range": "$input.params('range')",
-      		"operation" : "$context.httpMethod"
-	    	}
-      	},
+        "application/json": {
+          "table": "$input.params('table')",
+          "hash": "$input.params('hash')",
+          "range": "$input.params('range')",
+          "operation": "$context.httpMethod"
+        }
+      },
       "responses": {
         "400": {
           "statusCode": "400"
@@ -53,15 +57,15 @@
       "apiKeyRequired": false,
       "requestParameters": {},
       "requestTemplates": {
-		"application/json": {
-			"table": "$input.params('table')",
-		    "hash": "$input.params('hash')",
-			"range": "$input.params('range')",
-      		"hashID": "$input.params('hashID')",
-			"rangeID": "$input.params('rangeID')",
-      		"operation" : "$context.httpMethod"
-    		}
-  		},
+        "application/json": {
+          "table": "$input.params('table')",
+          "hash": "$input.params('hash')",
+          "range": "$input.params('range')",
+          "hashID": "$input.params('hashID')",
+          "rangeID": "$input.params('rangeID')",
+          "operation": "$context.httpMethod"
+        }
+      },
       "responses": {
         "400": {
           "statusCode": "400"
@@ -87,14 +91,14 @@
       "apiKeyRequired": false,
       "requestParameters": {},
       "requestTemplates": {
-		"application/json": {
-			"table": "$input.params('table')",
-			"hash": "$input.params('hash')",
-			"range": "$input.params('range')",
-      		"hashID": "$input.params('hashID')",
-      		"operation" : "$context.httpMethod"
-	    	}
-      	},
+        "application/json": {
+          "table": "$input.params('table')",
+          "hash": "$input.params('hash')",
+          "range": "$input.params('range')",
+          "hashID": "$input.params('hashID')",
+          "operation": "$context.httpMethod"
+        }
+      },
       "responses": {
         "400": {
           "statusCode": "400"
@@ -111,7 +115,7 @@
         }
       }
     },
- 	{
+    {
       "path": "cpk/{table}/{hash}/{range}",
       "method": "POST",
       "type": "AWS",
@@ -121,12 +125,12 @@
       "requestParameters": {},
       "requestTemplates": {
         "application/json": {
-			"table": "$input.params('table')",
-      		"hash": "$input.params('hash')",
-      		"range": "$input.params('range')",
-      		"body" : "$input.json('$')",
-      		"operation" : "$context.httpMethod"
-	    }
+          "table": "$input.params('table')",
+          "hash": "$input.params('hash')",
+          "range": "$input.params('range')",
+          "body": "$input.json('$')",
+          "operation": "$context.httpMethod"
+        }
       },
       "responses": {
         "400": {
@@ -144,7 +148,7 @@
         }
       }
     },
-	{
+    {
       "path": "cpk/{table}/{hash}/{range}/{hashID}/{rangeID}",
       "method": "PUT",
       "type": "AWS",
@@ -154,14 +158,14 @@
       "requestParameters": {},
       "requestTemplates": {
         "application/json": {
-			"table": "$input.params('table')",
-		    "hash": "$input.params('hash')",
-		    "range": "$input.params('range')",
-      		"hashID": "$input.params('hashID')",
-			"rangeID": "$input.params('rangeID')",
-      		"body" : "$input.json('$')",
-      		"operation" : "$context.httpMethod"
-	    }
+          "table": "$input.params('table')",
+          "hash": "$input.params('hash')",
+          "range": "$input.params('range')",
+          "hashID": "$input.params('hashID')",
+          "rangeID": "$input.params('rangeID')",
+          "body": "$input.json('$')",
+          "operation": "$context.httpMethod"
+        }
       },
       "responses": {
         "400": {
@@ -179,7 +183,7 @@
         }
       }
     },
-	{
+    {
       "path": "cpk/{table}/{hash}/{range}/{hashID}/{rangeID}",
       "method": "DELETE",
       "type": "AWS",
@@ -189,13 +193,13 @@
       "requestParameters": {},
       "requestTemplates": {
         "application/json": {
-			"table": "$input.params('table')",
-			"hash": "$input.params('hash')",
-			"range": "$input.params('range')",
-      		"hashID": "$input.params('hashID')",
-			"rangeID": "$input.params('rangeID')",
-      		"operation" : "$context.httpMethod"
-	    }
+          "table": "$input.params('table')",
+          "hash": "$input.params('hash')",
+          "range": "$input.params('range')",
+          "hashID": "$input.params('hashID')",
+          "rangeID": "$input.params('rangeID')",
+          "operation": "$context.httpMethod"
+        }
       },
       "responses": {
         "400": {

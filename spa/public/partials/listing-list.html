@@ -1,0 +1,15 @@
+<a ui-sref="newListing" class="btn-primary btn-lg nodecoration">Add</a>
+<table class="table movietable">
+    <tr>
+        <td><h3>All</h3></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr ng-repeat="listing in listings">
+        <td>{{listing.listStatus}}</td>
+        <!--<td ng-show="response">{{response.data}}</td>-->
+        <td>
+            <a class="btn btn-primary" ui-sref="viewListing({hashid:listing.uuid, rangeid:listing.createdDatetime})">View</a>
+        </td>
+    </tr>
+</table>

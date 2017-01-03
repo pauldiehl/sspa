@@ -31,32 +31,32 @@
         "PolicyDocument": {
           "Version": "2012-10-17",
           "Statement": [
-                {
-                    "Sid": "1",
-                    "Action": [
-                        "dynamodb:DeleteItem",
-                        "dynamodb:GetItem",
-                        "dynamodb:PutItem",
-                        "dynamodb:Query",
-                        "dynamodb:Scan",
-                        "dynamodb:UpdateItem",
-                        "lambda:GetFunction",
-                        "lambda:InvokeFunction"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "arn:aws:dynamodb:${region}:*:*"
-                },
-                {
-                    "Sid": "2",
-                    "Action": [
-                        "logs:CreateLogGroup",
-                        "logs:CreateLogStream",
-                        "logs:PutLogEvents"
-                    ],
-                    "Effect": "Allow",
-                    "Resource": "arn:aws:logs:${region}:*:*"
-                }
-            ]
+            {
+              "Sid": "1",
+              "Action": [
+                "dynamodb:DeleteItem",
+                "dynamodb:GetItem",
+                "dynamodb:PutItem",
+                "dynamodb:Query",
+                "dynamodb:Scan",
+                "dynamodb:UpdateItem",
+                "lambda:GetFunction",
+                "lambda:InvokeFunction"
+              ],
+              "Effect": "Allow",
+              "Resource": "arn:aws:dynamodb:${region}:*:*"
+            },
+            {
+              "Sid": "2",
+              "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+              ],
+              "Effect": "Allow",
+              "Resource": "arn:aws:logs:${region}:*:*"
+            }
+          ]
         },
         "Roles": [
           {

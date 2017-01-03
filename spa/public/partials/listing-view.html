@@ -1,0 +1,14 @@
+<table class="table movietable">
+    <tr>
+        <td><h3>Details</h3></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Title</td>
+        <td>{{listing.listStatus}}</td>
+    </tr>
+</table>
+<div>
+    <a class="btn btn-primary" ui-sref="editListing({hashid:listing.uuid, rangeid:listing.createdDatetime})">Edit</a>
+    <a class="btn btn-danger"  ng-click="deleteListing(listing)">Delete</a>
+</div>

@@ -21,12 +21,12 @@
       "apiKeyRequired": false,
       "requestParameters": {},
       "requestTemplates": {
-		"application/json": {
-			"table": "$input.params('table')",
-			"hash": "$input.params('hash')",
-      		"operation" : "$context.httpMethod"
-	    	}
-      	},
+        "application/json": {
+          "table": "$input.params('table')",
+          "hash": "$input.params('hash')",
+          "operation": "$context.httpMethod"
+        }
+      },
       "responses": {
         "400": {
           "statusCode": "400"
@@ -52,13 +52,13 @@
       "apiKeyRequired": false,
       "requestParameters": {},
       "requestTemplates": {
-		"application/json": {
-			"table": "$input.params('table')",
-		    "hash": "$input.params('hash')",
-      		"id": "$input.params('id')",
-      		"operation" : "$context.httpMethod"
-    		}
-  		},
+        "application/json": {
+          "table": "$input.params('table')",
+          "hash": "$input.params('hash')",
+          "id": "$input.params('id')",
+          "operation": "$context.httpMethod"
+        }
+      },
       "responses": {
         "400": {
           "statusCode": "400"
@@ -84,14 +84,14 @@
       "apiKeyRequired": false,
       "requestParameters": {},
       "requestTemplates": {
-		"application/json": {
-			"table": "$input.params('table')",
-			"hash": "$input.params('hash')",
-			"id": "$input.params('id')",
-      		"attribute": "$input.params('attribute')",
-      		"operation" : "$context.httpMethod"
-	    	}
-      	},
+        "application/json": {
+          "table": "$input.params('table')",
+          "hash": "$input.params('hash')",
+          "id": "$input.params('id')",
+          "attribute": "$input.params('attribute')",
+          "operation": "$context.httpMethod"
+        }
+      },
       "responses": {
         "400": {
           "statusCode": "400"
@@ -108,7 +108,7 @@
         }
       }
     },
- 	{
+    {
       "path": "spk/{table}/{hash}",
       "method": "POST",
       "type": "AWS",
@@ -118,11 +118,11 @@
       "requestParameters": {},
       "requestTemplates": {
         "application/json": {
-			"table": "$input.params('table')",
-      		"hash": "$input.params('hash')",
-      		"body" : "$input.json('$')",
-      		"operation" : "$context.httpMethod"
-	    }
+          "table": "$input.params('table')",
+          "hash": "$input.params('hash')",
+          "body": "$input.json('$')",
+          "operation": "$context.httpMethod"
+        }
       },
       "responses": {
         "400": {
@@ -140,7 +140,7 @@
         }
       }
     },
-	{
+    {
       "path": "spk/{table}/{hash}/{id}",
       "method": "PUT",
       "type": "AWS",
@@ -150,12 +150,12 @@
       "requestParameters": {},
       "requestTemplates": {
         "application/json": {
-			"table": "$input.params('table')",
-		    "hash": "$input.params('hash')",
-      		"id": "$input.params('id')",
-      		"body" : "$input.json('$')",
-      		"operation" : "$context.httpMethod"
-	    }
+          "table": "$input.params('table')",
+          "hash": "$input.params('hash')",
+          "id": "$input.params('id')",
+          "body": "$input.json('$')",
+          "operation": "$context.httpMethod"
+        }
       },
       "responses": {
         "400": {
@@ -173,7 +173,7 @@
         }
       }
     },
-	{
+    {
       "path": "spk/{table}/{hash}/{id}",
       "method": "DELETE",
       "type": "AWS",
@@ -183,11 +183,11 @@
       "requestParameters": {},
       "requestTemplates": {
         "application/json": {
-			"table": "$input.params('table')",
-			"hash": "$input.params('hash')",
-		    "id": "$input.params('id')",
-      		"operation" : "$context.httpMethod"
-	    }
+          "table": "$input.params('table')",
+          "hash": "$input.params('hash')",
+          "id": "$input.params('id')",
+          "operation": "$context.httpMethod"
+        }
       },
       "responses": {
         "400": {

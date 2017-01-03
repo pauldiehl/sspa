@@ -2,7 +2,7 @@ var params = module.exports;
 
 params.put = function(event, payload) {
 	payload.Item = event.body;
-    payload.Item["createdDate"] = new Date().getTime();
+    payload.Item["createdDatetime"] = new Date().getTime();
     return payload;
 };
 
